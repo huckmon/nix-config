@@ -56,6 +56,25 @@
           UMASK = "002";
         };
       };
+      readarr = {
+        image = "lscr.io/linuxserver/readarr:latest";
+        autoStart = true;
+        ports = [
+          "8787:8787"
+        ];
+        volumes = [
+            "/mnt/user/Media/downloads:/downloads"
+            "/mnt/user/Media/books:/books"
+            "/home/arr/readarr:/config"
+        ];
+        environment = {
+          TZ = "Australia/Adelaide";
+          PUID = "994";
+          GUID = "993";
+          UMASK = "002";
+        };
+      };
+
     };
   };
 }
