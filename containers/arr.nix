@@ -20,6 +20,16 @@
           UMASK = "002";
         };
       };
+      flaresolverr = {
+	image = "ghcr.io/flaresolverr/flaresolverr:latest";
+	autoStart = true;
+	environment = {
+	  TZ = "Australia/Adelaide";
+	};
+	ports = [
+	  "8191:8191"
+	];
+      };
       sonarr = {
         image = "lscr.io/linuxserver/sonarr:latest";
         autoStart = true;

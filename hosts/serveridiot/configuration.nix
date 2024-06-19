@@ -14,7 +14,7 @@
       ../../containers/nginxproxymanager.nix
       ../../containers/vaultwarden.nix
       ../../containers/arr.nix
-      ../../containers/homarr.nix
+      #../../containers/homarr.nix
       #../../containers/paperless-ngx.nix
       ./shares/samba.nix
       ./filesystems/mergerfs.nix
