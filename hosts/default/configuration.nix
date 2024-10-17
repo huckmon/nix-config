@@ -16,7 +16,7 @@
       ../../modules/nixos/libreoffice.nix
       ../../modules/nixos/virt-manager.nix
       ../../modules/nixos/steam.nix
-      #../../modules/nixos/networkfs.nix
+      ../../modules/nixos/networkfs.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -35,10 +35,38 @@
 
   sops.age.keyFile = "/home/huck/.config/sops/age/keys.txt";
 
-  sops.secrets.example-key = { };
-  sops.secrets."myservice/my_subdir/my_secret"= {
-    owner = config.users.users.huck.name;
+#  sops.secrets.example-key = { };
+#  sops.secrets."myservice/my_subdir/my_secret"= {
+#    owner = config.users.users.huck.name;
+#  };
+
+#  sops.secrets.samba = { };
+  sops.secrets."samba/user"= {
+#  owner = config.users.users.huck.name;
   };
+  sops.secrets."samba/password"= { 
+#    owner = config.users.users.huck.name;
+  };
+
+
+  # smb mount
+#  fileSystems."/mnt/share" = {
+#    device = "//192.168.60.219/Media";
+#    fsType = "cifs";
+#    options = [ 
+#        "username=share" 
+#        "password=" 
+#	"credentials=/etc/nixos/smb-secrets,uid=994,gid=993"
+#        "x-system.automount" 
+#        "noauto" 
+#      ];
+#    options = let 
+      
+#      automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
+
+#    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=994,gid=993"];
+#    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+#  };
 
   #networking.wireless.environmentFile = config.sops.secrets."wireless.env".path;
   #networking.wireless.networks = {
@@ -148,7 +176,6 @@
     gnupg
     gnupg1
     git
-    samba
   ];
 
   nixpkgs.config.allowUnfree = true;
