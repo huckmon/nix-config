@@ -125,12 +125,13 @@
     neofetch
     htop
     xboxdrv
+    python312Packages.ds4drv
     #minecraft
     podman
     powertop
     pciutils
     dolphin-emu
-    melonds
+    melonDS
     lutris
     dolphin
     pulseaudio
