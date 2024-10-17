@@ -130,6 +130,7 @@
     powertop
     pciutils
     dolphin-emu
+    melonds
     lutris
     dolphin
     pulseaudio
