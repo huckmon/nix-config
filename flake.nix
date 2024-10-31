@@ -19,7 +19,6 @@
     nixosConfigurations.anjanath = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-#        ./hosts/anjanath/test.nix
 	./hosts/anjanath/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
