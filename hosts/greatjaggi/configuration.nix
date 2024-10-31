@@ -125,7 +125,7 @@
   };
 
   # User. Don't forget to set a password with ‘passwd’.
-  users = 
+  users = {
     motdFile = "/etc/motd";
     users.huck = {
       isNormalUser = true;
