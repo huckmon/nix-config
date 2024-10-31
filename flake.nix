@@ -16,10 +16,11 @@
     pkgs  = nixpkgs.legacyPackages.${system};
   in
   {
-    nixosConfigurations.default = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.anjanath = nixpkgs.lib.nixosSystem {
       specialArgs = {inherit inputs;};
       modules = [
-        ./hosts/serveridiot/configuration.nix
+#        ./hosts/anjanath/test.nix
+	./hosts/anjanath/configuration.nix
         inputs.home-manager.nixosModules.default
       ];
     };

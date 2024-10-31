@@ -5,8 +5,8 @@
 let
   smb = {
     share_list = {
-      Backups = { path = "mnt/user/Backup"; };
-      Documents = { path = "mnt/user/Documents"; };
+      #Backups = { path = "mnt/user/Backup"; };
+      #Documents = { path = "mnt/user/Documents"; };
       Media = { path = "mnt/user/Media"; };
     };
     share_params = {
@@ -62,7 +62,7 @@ systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 share share - -") (lib.attrVa
  # ];
   services.samba = {
     enable = true;
-    #enableNmbd = true;
+    enableNmbd = true;
     openFirewall = true;
     invalidUsers = [ "root" ];
     securityType = "user";
@@ -71,7 +71,7 @@ systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 share share - -") (lib.attrVa
       server string = serveridiot
       netbios name = serveridiot
       security = user 
-      hosts allow = 192.168.60.0/24 #192.168.20.0/24
+      hosts allow = 192.168.60.0/24 192.168.20.0/24
       guest account = nobody
       map to guest = bad user
       '';
