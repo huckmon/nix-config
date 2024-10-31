@@ -31,10 +31,10 @@
     {
     
       nixosConfigurations = {
-	default = nixpkgs.lib.nixosSystem {
+	greatjaggi = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
           modules = [ 
-            ./hosts/default/configuration.nix
+            ./hosts/greatjaggi/configuration.nix
 	    #./modules/nixos/hyprland.nix
             inputs.home-manager.nixosModules.default
 	    inputs.nixos-hardware.nixosModules.framework-13th-gen-intel

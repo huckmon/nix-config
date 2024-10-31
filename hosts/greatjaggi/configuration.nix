@@ -88,7 +88,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  networking.hostName = "nix-laptop"; # Define your hostname.
+  networking.hostName = "greatjaggi"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -125,17 +125,20 @@
   };
 
   # User. Don't forget to set a password with ‘passwd’.
-  users.users.huck = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-    packages = with pkgs; [
-      firefox
-      tree
-      discord
-      signal-desktop
-      obsidian
-      prismlauncher
-    ];
+  users = 
+    motdFile = "/etc/motd";
+    users.huck = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+      packages = with pkgs; [
+        firefox
+        tree
+        discord
+        signal-desktop
+        obsidian
+        prismlauncher
+      ];
+    };
   };
 
   # List packages installed in system profile. To search, run:
