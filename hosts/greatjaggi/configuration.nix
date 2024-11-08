@@ -137,6 +137,7 @@
         signal-desktop
         obsidian
         prismlauncher
+	ascii-image-converter
       ];
     };
   };
@@ -172,6 +173,7 @@
     gnupg
     gnupg1
     git
+    gimp
   ];
 
   nixpkgs.config.allowUnfree = true;
