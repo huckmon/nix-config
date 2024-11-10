@@ -10,7 +10,7 @@
   services.samba.enable = true;
   services.samba.openFirewall = true;
   services.samba.smbd.enable = true;
-  services.gvfs.enable = true;
+  #services.gvfs.enable = true;
 
   # smb mount
   fileSystems."/mnt/share" = {

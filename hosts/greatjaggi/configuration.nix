@@ -65,9 +65,16 @@
       
       automount_opts = "x-systemd.automount,noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
 
-    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=994,gid=993"];
-#    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
+    in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1001,gid=100"];
   };
+
+  # part of enabling smb mount as user
+#  security.wrapper."mount.cifs" = {
+#    program = "mount.cifs";
+#    source = "${lib.getBin pkgs.cifs-utils}/bin/mount.cifs";
+#    owner = "root";
+#    group = "root";
+
 
   hardware = {
     #bluetooth.enable = true;
