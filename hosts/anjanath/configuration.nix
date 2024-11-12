@@ -22,7 +22,7 @@
       ../../modules/nixos/powermanagement.nix
       ../../modules/nixos/syncthing.nix
       ../../modules/nixos/virtualisation.nix
-    ];
+    ]; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
