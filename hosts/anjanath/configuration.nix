@@ -16,7 +16,7 @@
       ../../containers/arr.nix
       #../../containers/homarr.nix
       #../../containers/paperless-ngx.nix
-      ./shares/samba.nix
+      #./shares/samba.nix
       ./filesystems/mergerfs.nix
       ./filesystems/snapraid.nix
       ../../modules/nixos/powermanagement.nix
