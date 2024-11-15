@@ -120,7 +120,7 @@ systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 share share - -") (lib.attrVa
   };
   services.avahi = {
     enable = true;
-    nssmdns = true;
+    nssmdns4 = true;
     publish = {
       enable = true;
       addresses = true;
