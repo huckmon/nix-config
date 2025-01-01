@@ -17,8 +17,7 @@
       #../../containers/homarr.nix
       #../../containers/paperless-ngx.nix
       ./shares/samba.nix
-      ./filesystems/mergerfs.nix
-      ./filesystems/snapraid.nix
+      ./filesystems/mergerfs-snapraid.nix
       ../../modules/nixos/powermanagement.nix
       ../../modules/nixos/syncthing.nix
       ../../modules/nixos/virtualisation.nix
