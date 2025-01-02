@@ -11,14 +11,13 @@
     snapraid
   ];
 
-  # Mergerfs
+  # Mergerfs section
   programs.fuse.userAllowOther = true;
 
   # This fixes the weird mergerfs permissions issue
   boot.initrd.systemd.enable = true;
   
-  # Snapraid
-
+  # Snapraid section
   services.snapraid = {
     enable = true;
     parityFiles = [
@@ -47,7 +46,40 @@
     ];
   };
 
+  # Snapraid Systemd Services
+
+  systemd.services.snapraid-sync = {
+    serviceConfig = {
+      RestrictNamespaces = lib.mkForce false;
+      RestrictAddressFamilies = lib.mkForce "";
+    };
+    postStop = ''
+    if [[ $SERVICE_RESULT =~ "success" ]]; then
+      message=""
+    else
+      message=$(journalctl --unit=snapraid-sync.service -n 20 --no-pager)
+    fi
+    /run/current-system/sw/bin/notify -s "$SERVICE_RESULT" -t "Snapraid Sync" -m "$message"
+    '';
+  };
+
+  systemd.services.snapraid-scrub = {
+    serviceConfig = {
+      RestrictAddressFamilies = lib.mkForce "";
+    };
+    postStop = ''
+    if [[ $SERVICE_RESULT =~ "success" ]]; then
+      message=""
+    else
+      message=$(journalctl --unit=snapraid-scrub.service -n 20 --no-pager)
+    fi
+    /run/current-system/sw/bin/notify -s "$SERVICE_RESULT" -t "Snapraid Scrub" -m "$message"
+    '';
+  };
+
+
   # Disk mounts
+
   fileSystems."/mnt/data1" =
     { device = "dev/disk/by-uuid/cfa67f8d-a663-425b-be1e-028c5a5f9c1b";
       fsType = "ext4";
@@ -68,6 +100,8 @@
       fsType = "ext4";
       options = [ "defaults" ];
     };
+
+  # Mergerfs section that makes the combined drive
   fileSystems."/mnt/user" =
     { device = "mnt/data*";
       fsType = "fuse.mergerfs";

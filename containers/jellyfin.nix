@@ -18,7 +18,8 @@
         image = "lscr.io/linuxserver/jellyfin";
         autoStart = true;
         extraOptions = [
-          "--device=/dev/dri/renderD128:/dev/dri/renderD128" #Adds HW Acceleration for Intel QuickSync by mounting the video device. renderD128 is specifically capalbe of rendering, but not video output(?)
+          "--device=/dev/dri/renderD128:/dev/dri/renderD128" 
+          # Adds HW Acceleration for Intel QuickSync by mounting the video device. renderD128 is specifically capalbe of rendering, but not video output(?)
         ];
         volumes = [
           "/home/jellyfin/config:/config"

@@ -36,14 +36,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  hardware.opengl.enable = true;	# part of jellyfin
-  hardware.opengl.driSupport = true;	# part of jellyfin
-
-  networking.hostName = "anjanath"; # Define your hostname.
+  networking.hostName = "anjanath";
   networking.firewall.enable = true;
-  # Pick only one of the below networking options.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
@@ -95,7 +89,7 @@
     enableSSHSupport = true;
   };
 
-  #systemd timers
+  # systemd timers
   
   systemd.timers."mc-backup" = {
     wantedBy = [ "timers.target" ];
@@ -114,8 +108,6 @@
       Type = "oneshot";
     };
   };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
