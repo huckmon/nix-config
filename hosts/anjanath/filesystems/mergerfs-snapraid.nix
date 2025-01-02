@@ -50,8 +50,8 @@
 
   systemd.services.snapraid-sync = {
     serviceConfig = {
-      RestrictNamespaces = lib.mkForce false;
-      RestrictAddressFamilies = lib.mkForce "";
+      RestrictNamespaces = false;
+      RestrictAddressFamilies = "";
     };
     postStop = ''
     if [[ $SERVICE_RESULT =~ "success" ]]; then
@@ -65,7 +65,7 @@
 
   systemd.services.snapraid-scrub = {
     serviceConfig = {
-      RestrictAddressFamilies = lib.mkForce "";
+      RestrictAddressFamilies = "";
     };
     postStop = ''
     if [[ $SERVICE_RESULT =~ "success" ]]; then

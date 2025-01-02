@@ -14,8 +14,6 @@
       ../../containers/nginxproxymanager.nix
       ../../containers/vaultwarden.nix
       ../../containers/arr.nix
-      #../../containers/homarr.nix
-      #../../containers/paperless-ngx.nix
       ./shares/samba.nix
       ./filesystems/mergerfs-snapraid.nix
       ../../modules/nixos/powermanagement.nix
@@ -42,20 +40,8 @@
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkbOptions in tty.
-  # };
-
   users = {
-    motdFile = "/etc/motd";
+    #motdFile = "/etc/motd";
     users.huck = { # move to user file
       isNormalUser = true;
       home = "/home/huck";
@@ -79,6 +65,7 @@
     appimage-run
     ascii-image-converter
     unzip
+    libnotify
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -89,28 +76,11 @@
     enableSSHSupport = true;
   };
 
-  # systemd timers
-  
-  systemd.timers."mc-backup" = {
-    wantedBy = [ "timers.target" ];
-    partOf = [ "mc-backup.service" ];
-    timerConfig = {
-      OnCalendar = "monthly";
-      Persistent = "true";
-      Unit = "mc-backup.service";
-    };
-  };
-
-  systemd.services."mc-backup" = {
-    #path = with pkgs; [ bash ];
-    script = ''${pkgs.bash}/bin/bash /home/Documents/scripts/mc-backup.sh'';
-    serviceConfig = {
-      Type = "oneshot";
-    };
-  };
-
   # Enable the OpenSSH daemon.
-  services.openssh.enable = true;
+  services.openssh = { 
+    enable = true;
+    settings.PrintMotd = true;
+  };
   
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
