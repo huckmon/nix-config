@@ -1,4 +1,4 @@
-{ inputs, config, pkgs, libs, ... }:
+{ inputs, config, pkgs, lib, ... }:
 
 {
 
@@ -50,8 +50,8 @@
 
   systemd.services.snapraid-sync = {
     serviceConfig = {
-      RestrictNamespaces = false;
-      RestrictAddressFamilies = "";
+      RestrictNamespaces = lib.mkForce false;
+      RestrictAddressFamilies = lib.mkForce "";
     };
     postStop = ''
     if [[ $SERVICE_RESULT =~ "success" ]]; then

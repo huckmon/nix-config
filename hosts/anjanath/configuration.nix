@@ -66,6 +66,7 @@
     ascii-image-converter
     unzip
     libnotify
+    file
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
