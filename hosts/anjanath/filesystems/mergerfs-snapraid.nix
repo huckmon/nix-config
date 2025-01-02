@@ -65,7 +65,7 @@
 
   systemd.services.snapraid-scrub = {
     serviceConfig = {
-      RestrictAddressFamilies = "";
+      RestrictAddressFamilies = lib.mkForce "";
     };
     postStop = ''
     if [[ $SERVICE_RESULT =~ "success" ]]; then
