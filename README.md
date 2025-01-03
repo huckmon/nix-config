@@ -1,1 +1,1 @@
-readme of repo
+Configuration files for my NixOS machines.
