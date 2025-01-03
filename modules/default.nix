@@ -1,8 +1,8 @@
-{ config, lib, pkgs... }
+{ config, lib, pkgs, ... }:
 
 {
   imports = [
-    ./duckdns
+    #./duckdns
     ./powermanagement
   ];
 }

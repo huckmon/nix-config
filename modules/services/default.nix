@@ -1,12 +1,12 @@
-{ lib, pkgs, config, ... }
+{ lib, pkgs, config, ... }:
 
 {
 
   options.servicesConfig = {
-    enable = lib.mkEnableOption "Settings and services";
+    enable = lib.mkEnableOption "Server settings and services";
   };
 
-  config = mkIf config.servicesConfig.enable { 
+  config = lib.mkIf config.servicesConfig.enable { 
     
 
     environment.systemPackages = with pkgs; [

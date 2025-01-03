@@ -1,3 +1,4 @@
+
 { users, config, pkgs, lib, ... }:
 
 let
@@ -26,21 +27,31 @@ in
   services.samba-wsdd.enable = true;
 
   users = {
-    share = {
-      uid = 994
-      isSystemUser = true;
-      group = "share";
-    };
-    groups.share = {
-      gid = 993;
+  groups.share = {
+    gid = 993;
   };
 
-  environment = {
-    systemPackages = with pkgs; [
-      samba
-      avahi
-    ];
+  users.share = {
+    uid = 994;
+    isSystemUser = true;
+    group = "share";
+    };
   };
+
+
+#  users = {
+#    share = {
+#      uid = 994;
+#      isSystemUser = true;
+#      group = "share";
+#    };
+#    groups.share.gid = 993;
+#  };
+
+  environment.systemPackages = with pkgs; [
+    samba
+    avahi
+  ];
 
   systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 share share - -") (lib.attrValues smb.share_list) ++ ["d /mnt 0775 share share - -"];
 
@@ -85,7 +96,7 @@ in
         <port>445</port>
         </service>
         </service-group>
-        '';
+      '';
     };
   };
 }

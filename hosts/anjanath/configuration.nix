@@ -31,7 +31,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # custom config for services
-  serviceConfig = {
+  servicesConfig = {
     enable = true;
   };
 
