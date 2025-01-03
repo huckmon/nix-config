@@ -20,15 +20,23 @@
       ../../modules/nixos/powermanagement.nix
       ../../modules/nixos/syncthing.nix
       ../../modules/nixos/virtualisation.nix
+
+      ./filesystems
+      ./shares
+      ./syncthing
+
+      ../../modules/duckdns
+      ../../modules/powermanagement
+      ../../modules/virtualisation
+
+      ../../modules/services
     ]; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  home-manager = {
-    extraSpecialArgs = { inherit inputs; };
-    users = {
-      "huck" = import ./home.nix;
-    };
+  # custom config for services
+  serviceConfig = {
+    enable = true;
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -42,7 +50,7 @@
   # time.timeZone = "Europe/Amsterdam";
 
   users = {
-    users.huck = { # move to user file
+    users.huck = {
       isNormalUser = true;
       home = "/home/huck";
       extraGroups = [ "wheel" "share" ];

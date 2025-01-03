@@ -1,11 +1,10 @@
-  { config, lib, pkgs, ... }:
-
-  {
-
-  environment.systemPackages = with pkgs; [
-    podman
-    podman-compose
-  ];
+{ config, vars, lib, pkgs, ... }:
+#let     
+#  directories = [     
+#    "${vars.serviceConfigDir}/jellyfin"
+#  ];
+#in
+{
 
   hardware.opengl = {
     enable = true;
@@ -27,6 +26,11 @@
           "/mnt/user/Media/movies:/data/movies"
           "/mnt/user/Media/tv:/data/tvshows"
 	  "/mnt/user/Media/books:/data/books"
+#	  "${vars.serviceConfigDir}/jellyfin:/config"
+#	  "${vars.mainArray}/Media/anime:/data/media"
+#	  "${vars.mainArray}/Media/movies:/data/movies"
+#	  "${vars.mainArray}/Media/tv:/data/tvshows"
+#	  "${vars.mainArray}/Media/books:/data/books"
         ];
         ports = [ "8096:8096" ];
         environment = {
@@ -34,15 +38,13 @@
           UMASK = "002";
           GUID = "993";
           DOCKER_MODS = "linuxserver/mods:jellyfin-opencl-intel"; #Adds OpenCL-intel to jellyfin
-	  #ROC_ENABLE_PRE_VEGA = "1"; #Installs ROCm OpenCL runtime
         };
       };
     };
   };
+
   networking.firewall = {
     allowedTCPPorts = [ 8096 ];
-    #allowedUDPPorts = [ ];
   };
 
-
-  }
+}
