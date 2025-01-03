@@ -9,26 +9,22 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      inputs.home-manager.nixosModules.default
-      ../../containers/jellyfin.nix
-      ../../containers/deluge.nix
-      ../../containers/nginxproxymanager.nix
-      ../../containers/vaultwarden.nix
-      ../../containers/arr.nix
-      ./shares/samba.nix
-      ./filesystems/mergerfs-snapraid.nix
-      ../../modules/nixos/powermanagement.nix
-      ../../modules/nixos/syncthing.nix
-      ../../modules/nixos/virtualisation.nix
+#      inputs.home-manager.nixosModules.default
+#      ../../containers/jellyfin.nix
+#      ../../containers/deluge.nix
+#      ../../containers/nginxproxymanager.nix
+#      ../../containers/vaultwarden.nix
+#      ../../containers/arr.nix
+#      ./shares/samba.nix
+#      ./filesystems/mergerfs-snapraid.nix
+#      ../../modules/nixos/powermanagement.nix
+#      ../../modules/nixos/syncthing.nix
+#      ../../modules/nixos/virtualisation.nix
 
       ./filesystems
       ./shares
       ./syncthing
-
-      ../../modules/duckdns
-      ../../modules/powermanagement
-      ../../modules/virtualisation
-
+      ../../modules
       ../../modules/services
     ]; 
 
