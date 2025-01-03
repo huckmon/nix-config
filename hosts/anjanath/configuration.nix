@@ -1,3 +1,4 @@
+
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
@@ -41,7 +42,6 @@
   # time.timeZone = "Europe/Amsterdam";
 
   users = {
-    #motdFile = "/etc/motd";
     users.huck = { # move to user file
       isNormalUser = true;
       home = "/home/huck";
@@ -80,7 +80,13 @@
   # Enable the OpenSSH daemon.
   services.openssh = { 
     enable = true;
-    settings.PrintMotd = true;
+    #ports = [ ];
+    settings = {
+      PrintMotd = true;
+    #  ForceCommand = ''
+    #    bash /usr/amotd.sh
+    #  '';
+    };
   };
   
   # Copy the NixOS configuration file and link it from the resulting system
