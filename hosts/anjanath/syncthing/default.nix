@@ -1,6 +1,13 @@
-{ config, pkgs, ... }:
 
-{
+{ config, pkgs, vars, ... }:
+let
+  directories = [
+    "/home/syncthing"
+    "${vars.serviceConfigDir}/syncthing"
+  ];
+in
+{  
+  systemd.tmpfiles.rules = map (x: "d ${x} 0775 share share - -") directories;
 
   environment.systemPackages = with pkgs; [
     syncthing
