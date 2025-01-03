@@ -1,5 +1,5 @@
 
-{ config, pkgs, vars, ... }:
+{ config, vars, ... }:
 let
   directories = [
     "/home/syncthing"
@@ -8,10 +8,6 @@ let
 in
 {  
   systemd.tmpfiles.rules = map (x: "d ${x} 0775 share share - -") directories;
-
-  environment.systemPackages = with pkgs; [
-    syncthing
-  ];
 
   networking.firewall = {
     allowedTCPPorts = [ 8384 22000 ];
