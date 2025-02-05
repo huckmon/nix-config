@@ -3,7 +3,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, vars, lib, ... }:
 
 {
   imports =
@@ -28,11 +28,11 @@
     samba = {
       enable = true;
       #passwordFile = 
-      shares = {
-	Media = {
-	  path = "${vars.mainArray}/Media";
-	};
-      };
+      #shares = {
+	#Media = {
+	 # path = "${vars.mainArray}/Media";
+	#};
+      #};
     };
   };
 

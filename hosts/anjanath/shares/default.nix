@@ -24,15 +24,12 @@ in
 {
 
   options.custModules.samba = {
-    enable = lib.mkEnableOption {
-      description = "enable samba shares for machine";
-    };
-    commonSettings = lib.mkOption = {
+    enable = lib.mkEnableOption "enable samba shares for machine";
+    commonSettings = lib.mkOption {
       description = "parameters applied to each share";
-      type
     };
   };
-  config = lib.mkIf config.custModules.samba.enable  = 
+  config = lib.mkIf config.custModules.samba.enable { 
   # make shares visible for windows 10 clients
     services.samba-wsdd.enable = true;
 
