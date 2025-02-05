@@ -38,5 +38,22 @@
     allowedUDPPorts = [ 6881 ];
   };
 
-
+#  options.custModules.services.deluge = {
+#    enable = lib.mkEnableOptions "Deluge client"
+#    configDir = lib.mkOption {
+#      default = "/var/lib/deluge";
+#    };
+#  };
+    
+#  config = lib.mkIf config.custModules.deluge.enable {
+#    services.deluge = {
+#      enable = true;
+#      user = config.custModule.user;
+#      group = config.custModule.group;
+#      web = {
+#        enable = true;
+#	openFirewall;
+#      };
+#    };
+#  };
 }
