@@ -9,18 +9,6 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-#      inputs.home-manager.nixosModules.default
-#      ../../containers/jellyfin.nix
-#      ../../containers/deluge.nix
-#      ../../containers/nginxproxymanager.nix
-#      ../../containers/vaultwarden.nix
-#      ../../containers/arr.nix
-#      ./shares/samba.nix
-#      ./filesystems/mergerfs-snapraid.nix
-#      ../../modules/nixos/powermanagement.nix
-#      ../../modules/nixos/syncthing.nix
-#      ../../modules/nixos/virtualisation.nix
-
       ./filesystems
       ./shares
       ./syncthing
@@ -30,9 +18,19 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  # custom config for services
-  servicesConfig = {
+  # custom option for services configs
+  custModules = {
     enable = true;
+    services = {
+      enable = true;
+    };
+    samba = {
+      enable = true;
+      #passwordFile = 
+      shares = {
+	Media = {
+	  path = "${vars.mainArray}/Media";
+    };
   };
 
   # Use the systemd-boot EFI boot loader.
@@ -44,16 +42,6 @@
 
   # Set your time zone.
   # time.timeZone = "Europe/Amsterdam";
-
-  users = {
-    users.huck = {
-      isNormalUser = true;
-      home = "/home/huck";
-      extraGroups = [ "wheel" "share" ];
-      packages = with pkgs; [
-      ];
-    };
-  };
 
   # List packages installed in system profile. To search, run: $ nix search wget
   environment.systemPackages = with pkgs; [
@@ -87,9 +75,7 @@
     #ports = [ ];
     settings = {
       PrintMotd = true;
-    #  ForceCommand = ''
-    #    bash /usr/amotd.sh
-    #  '';
+      #Password
     };
   };
   

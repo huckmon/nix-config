@@ -2,17 +2,14 @@
 
 {
 
-  options.servicesConfig = {
+  options.custModules.services = {
     enable = lib.mkEnableOption "Server settings and services";
   };
 
-  config = lib.mkIf config.servicesConfig.enable { 
-    
-
+  config = lib.mkIf config.custModules.services.enable { 
     environment.systemPackages = with pkgs; [
       docker-compose
     ];
-
     virtualisation = {
       podman = {
         enable = true;
@@ -24,12 +21,9 @@
       docker.enable = true;
       oci-containers.backend = "podman";
     };
-
-    networking.firewall.interfaces.podman0.allowedUDPPorts = [ 53 ];
+    networking.firewall.interfaces.podman0.allowedUDPPorts = [ 53 ]; # podman port
     networking.firewall.trustedInterfaces = [ "docker0" ];
-
   };
-
 
   imports = [
     ./arr
@@ -39,5 +33,4 @@
     ./vaultwarden
     #./wireguard
   ];
-
 }

@@ -19,10 +19,11 @@
     nixosConfigurations.anjanath = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
-        vars = import ./hosts/anjanath/vars.nix;
+        vars = import ./hosts/anjanath/vars.nix; # handles custom variables from var file
       };
       modules = [
 	./hosts/anjanath/configuration.nix
+	./users/huck
         #inputs.home-manager.nixosModules.default
       ];
     };

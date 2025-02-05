@@ -42,6 +42,12 @@
       options = [ "defaults" ];
     };
 
+  fileSystems."/mnt/crucialssd" = 
+    { device = "dev/disk/by-uuid/da085350-7459-485a-b19d-9ff26d14be28";
+      fsType = "ext4";
+      options = [ "defaults" ];
+    };
+
   # Mergerfs section that makes the combined drive
   fileSystems."/mnt/user" =
     { device = "mnt/data*";
