@@ -26,7 +26,7 @@ in
 
 {
 
-  options.custModules.samba = {
+  options.customModules.samba = {
     enable = lib.mkEnableOption "enable samba shares for machine";
     commonSettings = lib.mkOption {
       description = "parameters applied to each share";
