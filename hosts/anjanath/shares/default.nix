@@ -1,6 +1,4 @@
-
-{ users, config, pkgs, lib, ... }:
-
+{ users, config, pkgs, lib, vars ... }:
 let
   smb = {
     share_list = {
