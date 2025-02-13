@@ -1,7 +1,7 @@
 { config, lib, vars, ... }:
 let
   service = "deluge";
-  cfgserv = config.customModules.services.${service};
+  cfgerv = config.customModules.services.${service};
   cfg = config.customModules;
 in
 {
