@@ -64,6 +64,7 @@
     libnotify
     file
     python312
+    intel-gpu-tools
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

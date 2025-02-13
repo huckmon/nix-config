@@ -1,4 +1,4 @@
-{ config, vars, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   service = "jellyfin";
   cfgServ = config.customModules.services.${service};
@@ -50,6 +50,19 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    nixpkgs.config.packageOverrides = pkgs: {
+      vaapiIntel = pkgs.caapiIntel.override {enableHybridCodec = true; };
+    };
+    hardware.graphics = {
+      enable = true;
+      extraPackages = with pkgs; [
+        intel-media-driver
+        intel-vaapi-driver
+        vaapiVdpau
+        intel-compute-runtime
+        intel-media-sdk
+      ];
+    }
     services.${service} = {
       enable = true;
       user = cfg.user;
