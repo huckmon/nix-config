@@ -1,7 +1,7 @@
 { config, lib, vars, ... }:
 let
   service = "deluge";
-  cfgServ = config.customModules.services.${service};
+  cfgServ = config.customModules.services.deluge;
   cfg = config.customModules;
 in
 {
@@ -37,11 +37,11 @@ in
   options.cfgServ = {
     enable = lib.mkEnableOption "Enable Deluge client";
     configDir = lib.mkOption {
-      default = "/var/lib/${service}";
+      default = "/var/lib/deluge";
     };
   };    
   config = lib.mkIf cfgServ.enable {
-    services.${service} = {
+    services.deluge = {
       enable = true;
       user = cfg.user;
       group = cfg.group;
