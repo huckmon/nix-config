@@ -1,11 +1,12 @@
 { config, lib, vars, ... }:
-#let
-#  directories = [
-#    "${vars.mainArray}/Media/downloads"
-#    "${vars.serviceConfigDir}/deluge"
-#  ];
-#in
-#{
+let
+  directories = [
+    service = "deluge";
+    cfgserv = config.customModules.services.${service};
+    cfg = config.customModules;
+  ];
+in
+{
 #  virtualisation.oci-containers = {
 #    containers = {
 #      deluge = {
@@ -35,20 +36,20 @@
 #    allowedUDPPorts = [ 6881 ];
 #  };
 
-  options.custModules.services.deluge = {
+  options.cfgServ = {
     enable = lib.mkEnableOption "Enable Deluge client";
     configDir = lib.mkOption {
-      default = "/var/lib/deluge";
+      default = "/var/lib/${service}";
     };
   };    
-  config = lib.mkIf config.custModules.services.deluge.enable {
-    services.deluge = {
+  config = lib.mkIf cfgServ.enable {
+    services.${service} = {
       enable = true;
-      user = config.custModules.user;
-      group = config.custModules.group;
+      user = cfg.user;
+      group = cfg.group;
       web = {
         enable = true;
-	openFirewall = true;
+      openFirewall = true;
       };
     };
   };

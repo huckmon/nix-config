@@ -19,7 +19,7 @@
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # custom option for services configs
-  custModules = {
+  customModules = {
     enable = true;
     services = {
       enable = true;

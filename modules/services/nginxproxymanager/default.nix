@@ -1,10 +1,5 @@
 { config, pkgs, ... }: 
-#let     
-#  directories = [     
-#    "${vars.serviceConfigDir}/nginx/data"
-#    "${vars.serviceConfigDir}/nginx/letsencrypt"     
-#  ];     
-#in
+
 {
   virtualisation.oci-containers = {
     containers = {

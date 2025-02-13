@@ -1,7 +1,7 @@
 { config, lib, ... }:
 
 {
-  options.custModules = {
+  options.customModules = {
     enable = lib.mkEnableOption "Enables custom modules and configuration variables";
     user = lib.mkOption {
       default = "share";
@@ -21,15 +21,15 @@
     #./duckdns
     ./powermanagement
   ];
-  config = lib.mkIf config.custModules.enable {
+  config = lib.mkIf cfg.enable {
     users = {
-      groups.${config.custModules.group} = {
+      groups.${config.customModules.group} = {
 	gid = 993;
       };
-      users.${config.custModules.group} = {
+      users.${config.customModules.group} = {
         uid = 994;
         isSystemUser = true;
-        group = config.custModules.group;
+        group = config.customModules.group;
       };
     };
   };

@@ -2,11 +2,11 @@
 
 {
 
-  options.custModules.services = {
+  options.customModules.services = {
     enable = lib.mkEnableOption "Server settings and services";
   };
 
-  config = lib.mkIf config.custModules.services.enable { 
+  config = lib.mkIf config.customModules.services.enable {
     environment.systemPackages = with pkgs; [
       docker-compose
     ];
@@ -26,6 +26,9 @@
   };
 
   imports = [
+    #./arr/prowlarr
+    #./arr/sonarr
+    #./arr/radarr
     ./arr
     ./deluge
     ./jellyfin
