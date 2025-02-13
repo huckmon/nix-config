@@ -23,7 +23,8 @@
     enable = true;
     services = {
       enable = true;
-#      deluge.enable = true;
+      deluge.enable = true;
+      jellyfin.enable = true;
     };
     samba = {
       enable = true;

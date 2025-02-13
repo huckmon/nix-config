@@ -1,5 +1,9 @@
-{ config, lib, ... }:
-
+{ config, vars, lib,... }:
+let
+  directories = [
+    cfg = config.customModules;
+  ];
+in
 {
   options.customModules = {
     enable = lib.mkEnableOption "Enables custom modules and configuration variables";
