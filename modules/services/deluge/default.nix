@@ -1,10 +1,8 @@
 { config, lib, vars, ... }:
 let
-  directories = [
-    service = "deluge";
-    cfgserv = config.customModules.services.${service};
-    cfg = config.customModules;
-  ];
+  service = "deluge";
+  cfgserv = config.customModules.services.${service};
+  cfg = config.customModules;
 in
 {
 #  virtualisation.oci-containers = {

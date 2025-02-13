@@ -1,10 +1,8 @@
 { config, vars, lib, ... }:
 let
-  directories = [
-    service = "jellyfin";
-    cfgServ = config.customModules.services.${service};
-    cfg = config.customModules;
-  ];
+  service = "jellyfin";
+  cfgServ = config.customModules.services.${service};
+  cfg = config.customModules;
 in
 {
 

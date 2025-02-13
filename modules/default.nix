@@ -1,8 +1,6 @@
 { config, vars, lib,... }:
 let
-  directories = [
-    cfg = config.customModules;
-  ];
+  cfg = config.customModules;
 in
 {
   options.customModules = {
@@ -28,7 +26,7 @@ in
   config = lib.mkIf cfg.enable {
     users = {
       groups.${config.customModules.group} = {
-	gid = 993;
+        gid = 993;
       };
       users.${config.customModules.group} = {
         uid = 994;
