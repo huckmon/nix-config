@@ -1,4 +1,4 @@
-{ config, vars, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   service = "jellyfin";
   cfgServ = config.customModules.services.${service};
