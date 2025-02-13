@@ -62,7 +62,7 @@ in
         intel-compute-runtime
         intel-media-sdk
       ];
-    }
+    };
     services.${service} = {
       enable = true;
       user = cfg.user;
