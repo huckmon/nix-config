@@ -3,7 +3,7 @@ let
   smb = {
     share_list = {
       # needs to be rewritten to use path variable
-      Media = { path = "/mnt/user/Media"; };
+      "Media" = { "path" = "/mnt/user/Media"; };
     };
     share_params = {
       "browseable" = "yes";
@@ -24,7 +24,13 @@ in
     commonSettings = lib.mkOption {
       description = "parameters applied to each share";
     };
+    #globalSettings = lib.mkOption {
+    #  description = "global samba params";
+    #  default = { };
+    #  example = { };	
+    #};
   };
+
   config = lib.mkIf config.customModules.samba.enable {
   # make shares visible for windows 10 clients
     services.samba-wsdd.enable = true;
@@ -60,20 +66,30 @@ in
 
     services.samba = {
       enable = true;
-      enableNmbd = true;
+      nmbd.enable = true;
       openFirewall = true;
-      invalidUsers = [ "root" ];
-      securityType = "user";
-      extraConfig = ''
-        workgroup = WORKGROUP
-        server string = anjanath;
-        netbios name = anjanath;
-        security = user
-        hosts allow = 192.168.60.0/24 192.168.20.0/24
-        guest account = nobody
-        map to guest = bad user
-      '';
-      shares = smb_shares;
+      settings = {
+	global = {
+          workgroup = "WORKGROUP";
+          "server string"  = "anjanath";
+          "netbios name" = "anjanath";
+          "hosts allow" = "192.168.60.0/24 192.168.20.0/24";
+          "guest account" = "nobody";
+          "map to guest" = "bad user";
+          "security" = "user";
+          "invalid users" = [ "root" ];
+        };
+        "Media" = { #share_params;
+	  "path" = "/mnt/user/Media";
+          "browseable" = "yes";
+          "writeable" = "yes";
+          "read only" = "no";
+          "guest ok" = "no";
+          "create mask" = "0644";
+          "directory mask" = "2775";
+          "valid users" = "share";
+	};
+      }; # // builtins.mapAttrs (name: value: value // smb.share_params) smb.share_list;
     };
 
     services.avahi = {
