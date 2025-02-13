@@ -16,12 +16,7 @@ let
     };
   };
   smb_shares = builtins.mapAttrs (name: value: value // smb.share_params) smb.share_list;
-
-  service = "samba";
-  cfgServ = config.customModules.services.${service};
-  cfg = config.customModules;
 in
-
 {
 
   options.customModules.samba = {
@@ -30,7 +25,7 @@ in
       description = "parameters applied to each share";
     };
   };
-  config = lib.mkIf cfgServ.enable {
+  config = lib.mkIf config.customModules.samba.enable {
   # make shares visible for windows 10 clients
     services.samba-wsdd.enable = true;
 
@@ -61,7 +56,7 @@ in
       avahi
     ];
 
-    systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 ${cfg.user} ${cfg.group} - -") (lib.attrValues smb.share_list);
+    systemd.tmpfiles.rules = map (x: "d ${x.path} 0775 ${config.customModules.user} ${config.customModules.group} - -") (lib.attrValues smb.share_list);
 
     services.samba = {
       enable = true;
