@@ -20,7 +20,7 @@ in
           "/mnt/user/Media/anime:/data/media"
           "/mnt/user/Media/movies:/data/movies"
           "/mnt/user/Media/tv:/data/tvshows"
-           "/mnt/user/Media/books:/data/books"
+          "/mnt/user/Media/books:/data/books"
 #	  "${vars.serviceConfigDir}/jellyfin:/config"
 #	  "${vars.mainArray}/Media/anime:/data/media"
 #	  "${vars.mainArray}/Media/movies:/data/movies"
