@@ -21,6 +21,8 @@
     };
   };
 
+  # add service to run autoaspm.py after poweron
+
   powerManagement.powertop.enable = true;
 
 }

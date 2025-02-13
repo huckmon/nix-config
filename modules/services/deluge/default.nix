@@ -5,8 +5,7 @@
 #    "${vars.serviceConfigDir}/deluge"
 #  ];
 #in
-{
-#  systemd.tmpfiles.rules = map (x: "d ${x} 0775 share share - -") directories;
+#{
 #  virtualisation.oci-containers = {
 #    containers = {
 #      deluge = {
@@ -41,8 +40,7 @@
     configDir = lib.mkOption {
       default = "/var/lib/deluge";
     };
-  };
-    
+  };    
   config = lib.mkIf config.custModules.services.deluge.enable {
     services.deluge = {
       enable = true;
@@ -55,3 +53,4 @@
     };
   };
 }
+

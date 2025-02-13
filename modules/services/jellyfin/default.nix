@@ -1,11 +1,10 @@
-{ config, vars, lib, pkgs, ... }:
+{ config, vars, lib, ... }:
 #let     
 #  directories = [     
 #    "${vars.serviceConfigDir}/jellyfin"
 #  ];
 #in
 {
-
   hardware.opengl = {
     enable = true;
     driSupport = true;
@@ -45,6 +44,13 @@
 
   networking.firewall = {
     allowedTCPPorts = [ 8096 ];
+  };
+
+  options.custModules.services.jellyfin = {
+    enable = lib.mkEnableOption "Enable Jellyfin service";
+    configDir = lib.mkOption {
+      default = "var/lib/jellyfin"
+    };
   };
 
 }

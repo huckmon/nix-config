@@ -5,7 +5,7 @@ let
   smb = {
     share_list = {
       # needs to be rewritten to use path variable
-      Media = { path = "mnt/user/Media"; };
+      Media = { path = "/mnt/user/Media"; };
     };
     share_params = {
       "browseable" = "yes";

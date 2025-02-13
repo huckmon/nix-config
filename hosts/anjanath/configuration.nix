@@ -23,7 +23,7 @@
     enable = true;
     services = {
       enable = true;
-      deluge.enable = true;
+#      deluge.enable = true;
     };
     samba = {
       enable = true;
@@ -62,6 +62,7 @@
     unzip
     libnotify
     file
+    python312
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
