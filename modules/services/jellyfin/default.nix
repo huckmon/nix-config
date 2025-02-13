@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, vars, lib, ... }:
 let
   service = "jellyfin";
   cfgServ = config.customModules.services.${service};
@@ -51,7 +51,7 @@ in
 
   config = lib.mkIf cfg.enable {
     nixpkgs.config.packageOverrides = pkgs: {
-      vaapiIntel = pkgs.caapiIntel.override {enableHybridCodec = true; };
+      vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true; };
     };
     hardware.graphics = {
       enable = true;
