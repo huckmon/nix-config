@@ -1,10 +1,8 @@
 { config, vars, lib, ... }:
 let
-  directories = [
-    service = "sonarr";
-    cfgServ = config.customModules.services.${service};
-    cfg = config.customModules;
-  ];
+  service = "sonarr";
+  cfgServ = config.customModules.services.${service};
+  cfg = config.customModules;
 in
 {
   options.cfgServ = {
