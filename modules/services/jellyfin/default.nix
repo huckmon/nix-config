@@ -37,7 +37,7 @@ in
 #    allowedTCPPorts = [ 8096 ];
 #  };
 
-  options.customModules.services.jellyfin = {
+  options.customModules.services.${service} = {
     enable = lib.mkEnableOption "Enable ${service} service";
     configDir = lib.mkOption {
       default = "var/lib/${service}";

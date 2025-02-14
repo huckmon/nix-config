@@ -5,7 +5,7 @@ let
   cfg = config.customModules;
 in
 {
-  options.cfgServ = {
+  options.customModules.services.${service} = {
     enable = lib.mkEnableOption "Enable ${service} service";
     configDir = lib.mkOption {
       default = "var/lib/${service}";

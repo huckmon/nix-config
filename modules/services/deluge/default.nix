@@ -34,7 +34,7 @@ in
 #    allowedUDPPorts = [ 6881 ];
 #  };
 
-  options.customModules.services.deluge = {
+  options.customModules.services.${service} = {
     enable = lib.mkEnableOption "Enable Deluge client";
     configDir = lib.mkOption {
       default = "/var/lib/deluge";
