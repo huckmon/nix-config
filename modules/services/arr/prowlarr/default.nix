@@ -15,8 +15,6 @@ in
   config = lib.mkIf cfg.enable {
     services.${service} = {
       enable = true;
-      user = cfg.user;
-      group = cfg.group;
       openFirewall = true;
     };
   };
