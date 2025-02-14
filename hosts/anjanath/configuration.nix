@@ -25,6 +25,9 @@
       enable = true;
       deluge.enable = true;
       #jellyfin.enable = true;
+      sonarr.enable = true;
+      radarr.enable = true;
+      prowlarr.enable = true;
     };
     samba = {
       enable = true;
