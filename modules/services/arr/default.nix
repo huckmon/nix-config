@@ -37,7 +37,7 @@
 	  "8989:8989"
 	];
         volumes = [
-          "/mnt/user/Media/downloads:/downloads"
+          "/mnt/user/Media/downloads:/mnt/user/Media/downloads"
           "/mnt/user/Media/tv:/tv"
           "/mnt/user/Media/anime:/anime"
           "/home/arr/sonarr:/config"
@@ -56,7 +56,7 @@
 	  "7878:7878"
 	];
         volumes = [
-          "/mnt/user/Media/downloads:/downloads"
+          "/mnt/user/Media/downloads:/mnt/user/Media/downloads"
           "/mnt/user/Media/movies:/movies"
           "/mnt/user/Media/anime:/anime"
           "/home/arr/radarr:/config"
