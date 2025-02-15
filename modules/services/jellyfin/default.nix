@@ -65,7 +65,7 @@ in
       group = cfg.group;
       openFirewall = true;
     };
-    environment.systemPackages = [
+    environment.systemPackages = with pkgs; [
       jellyfin
       jellyfin-web
       jellyfin-ffmpeg
