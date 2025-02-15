@@ -25,4 +25,6 @@
 
   powerManagement.powertop.enable = true;
 
+  #system.activationScripts = { "/};
+
 }

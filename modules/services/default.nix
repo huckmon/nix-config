@@ -26,10 +26,10 @@
   };
 
   imports = [
-    #./arr/prowlarr
-    #./arr/sonarr
-    #./arr/radarr
-    ./arr
+    ./arr/prowlarr
+    ./arr/sonarr
+    ./arr/radarr
+    #./arr
     ./deluge
     ./jellyfin
     ./nginxproxymanager
