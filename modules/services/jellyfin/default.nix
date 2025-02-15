@@ -54,6 +54,7 @@ in
         intel-media-driver
         intel-vaapi-driver
         vaapiVdpau
+	libvdpau-va-gl
         intel-compute-runtime
         intel-media-sdk
       ];
@@ -64,6 +65,11 @@ in
       group = cfg.group;
       openFirewall = true;
     };
+    environment.systemPackages = [
+      jellyfin
+      jellyfin-web
+      jellyfin-ffmpeg
+    ];
   };
 
 }
