@@ -22,8 +22,8 @@
         vars = import ./hosts/anjanath/vars.nix; # handles custom variables from var file
       };
       modules = [
-	./hosts/anjanath/configuration.nix
-	./users/huck
+        ./hosts/anjanath
+        ./users/huck
         #inputs.home-manager.nixosModules.default
       ];
     };
@@ -34,8 +34,8 @@
         vars = import ./hosts/anjanath/vars.nix; # handles custom variables from var file
       };
       modules = [
-	./hosts/goremagala/configuration.nix
-	./users/huck
+        ./hosts/goremagala
+        ./users/huck
         #inputs.home-manager.nixosModules.default
       ];
     };
