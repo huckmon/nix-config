@@ -27,5 +27,18 @@
         #inputs.home-manager.nixosModules.default
       ];
     };
+
+    nixosConfigurations.goremagala = nixpkgs.lib.nixosSystem {
+      specialArgs = {
+        inherit inputs;
+        vars = import ./hosts/anjanath/vars.nix; # handles custom variables from var file
+      };
+      modules = [
+	./hosts/goremagala/configuration.nix
+	./users/huck
+        #inputs.home-manager.nixosModules.default
+      ];
+    };
+
   };
 }
