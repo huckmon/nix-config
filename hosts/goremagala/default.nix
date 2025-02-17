@@ -3,37 +3,37 @@
 {
   imports =
     [
-      /etc/nixos/hardware-configuration.nix
+      ./hardware-configuration.nix
       #./filesystems
       #./shares
       #./syncthing
-      #../../modules
+      ../../modules
       #../../modules/services
     ]; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # custom option for services configs
-  customModules = {
-    enable = true;
-    services = {
-      enable = true;
-      deluge.enable = true;
+#  customModules = {
+#    enable = true;
+#    services = {
+#      enable = true;
+#      deluge.enable = true;
 #      jellyfin.enable = true;
-      sonarr.enable = true;
-      radarr.enable = true;
-      prowlarr.enable = true;
-    };
-    samba = {
-      enable = true;
+#      sonarr.enable = true;
+#     radarr.enable = true;
+#      prowlarr.enable = true;
+#    };
+#    samba = {
+#      enable = true;
       #passwordFile = 
       #shares = {
 	#Media = {
 	 # path = "${vars.mainArray}/Media";
 	#};
       #};
-    };
-  };
+#    };
+#  };
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

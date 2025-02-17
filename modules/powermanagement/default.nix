@@ -1,12 +1,14 @@
 { config, pkgs, ... }:
-
+let
+  service = "jellyfin";
+  cfgServ = config.customModules.services.${service};
+  cfg = config.customModules;
+in
 {
-
   environment.systemPackages = with pkgs; [
     powertop
     hd-idle
     hdparm
-    tlp
     pciutils
   ];
 
