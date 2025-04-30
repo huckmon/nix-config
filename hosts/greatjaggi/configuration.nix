@@ -57,7 +57,7 @@
 #    options = [ 
 #        "username=share" 
 #        "password=" 
-#	"credentials=/etc/nixos/smb-secrets,uid=994,gid=993"
+#	 "credentials=/etc/nixos/smb-secrets,uid=994,gid=993"
 #        "x-system.automount" 
 #        "noauto" 
 #      ];
@@ -68,6 +68,7 @@
     in ["${automount_opts},credentials=/etc/nixos/smb-secrets,uid=1001,gid=100"];
   };
 
+
   # part of enabling smb mount as user
 #  security.wrapper."mount.cifs" = {
 #    program = "mount.cifs";
@@ -76,14 +77,10 @@
 #    group = "root";
 
 
-  hardware = {
+  #hardware = {
     #bluetooth.enable = true;
-#    opengl = {
-#      enable = true;
-#      driSupport32Bit = true;
-#      driSupport = true;
-#    };
-    pulseaudio.support32Bit = true;
+  services.pulseaudio = {
+    support32Bit = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -120,7 +117,6 @@
   # services.printing.enable = true;
 
   # Sound.
-  #sound.enable = true; # apprently this is depricated
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -156,9 +152,7 @@
     wget
     neofetch
     htop
-    xboxdrv
     python312Packages.ds4drv
-    #minecraft
     podman
     powertop
     pciutils
@@ -181,6 +175,9 @@
     gnupg1
     git
     gimp
+    power-profiles-daemon # power profiles for kde
+    python3
+    jellyfin-media-player
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -205,14 +202,16 @@
     powertop.enable = true;
   };
 
-  systemd.services.audio-fix = { # fixes audio popping caused by powertop audio tuning
+  # fixes audio popping caused by powertop audio tuning
+  systemd.services.audio-fix = {
     script = ''
       echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
     '';
     wantedBy = [ "multi-user.target" ];
   };
 
-  services.pipewire.wireplumber.extraConfig = { #prevents pipewire from nuking battery by making it ignore cameras 
+  # prevents pipewire from nuking battery by making it ignore cameras
+  services.pipewire.wireplumber.extraConfig = {
     "10-disable-camera" = {
       "wireplumber.profiles" = {
         main = {

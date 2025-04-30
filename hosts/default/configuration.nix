@@ -4,6 +4,9 @@
 
 { config, pkgs, inputs, ... }:
 
+# THIS IS NO LONGER USED, GO TO GREATJAGGI DIR
+
+
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -29,6 +32,13 @@
       "huck" = import ./home.nix;
     };
   };
+
+  services.flatpak.enable = true;
+
+  xdg.portal.enable = true;
+  xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  xdg.portal.config.common.default = "gtk";
+
 
   # sops-nix configuration - move to it's own file
   sops.defaultSopsFile = ../../secrets/secrets.yaml;
@@ -69,14 +79,15 @@
 #    in ["${automount_opts},credentials=/etc/nixos/smb-secrets"];
   };
 
-  hardware = {
+  #hardware = {
     #bluetooth.enable = true;
 #    opengl = {
 #      enable = true;
 #      driSupport32Bit = true;
 #      driSupport = true;
 #    };
-    pulseaudio.support32Bit = true;
+  services.pulseaudio = { 
+    support32Bit = true;
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -169,6 +180,8 @@
     gnupg
     gnupg1
     git
+    jellyfin-media-player
+    jellyfin-mpv-shim
   ];
 
   nixpkgs.config.allowUnfree = true;
