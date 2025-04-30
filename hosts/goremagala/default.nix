@@ -23,6 +23,7 @@
       sonarr.enable = true;
       radarr.enable = true;
       prowlarr.enable = true;
+      jellyfin.enable = true;
     };
     samba = {
       enable = true;
