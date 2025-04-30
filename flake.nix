@@ -47,7 +47,7 @@
       ];
     };
 
-    nixosConfigurations.greatjaggi = nixpkgs.lib.nixosSystem {
+    nixosConfigurations.greatjaggi = nixpkgs-normal.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
         vars = import ./hosts/greatjaggi/vars.nix;
