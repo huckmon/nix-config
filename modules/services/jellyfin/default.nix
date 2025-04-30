@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, vars, ... }:
 let
   service = "jellyfin";
   cfgServ = config.customModules.services.${service};
@@ -37,14 +37,14 @@ in
     allowedTCPPorts = [ 8096 ];
   };
 
-#  options.customModules.services.${service} = {
-#    enable = lib.mkEnableOption "Enable ${service} service";
+  options.customModules.services.${service} = {
+    enable = lib.mkEnableOption "Enable ${service} service";
 #    configDir = lib.mkOption {
 #      default = "var/lib/${service}";
 #    };
-#  };
+  };
 
-#  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
 #    nixpkgs.config.packageOverrides = pkgs: {
 #      vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true; };
 #    };
@@ -70,6 +70,6 @@ in
 #      jellyfin-web
 #      jellyfin-ffmpeg
 #    ];
-#  };
+  };
 
 }
