@@ -3,8 +3,8 @@
 
   inputs = {
 
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
-    nixpkgs-normal.url = "github:nixos/nixpkgs/nixos-unstable";
+    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     home-manager = {
@@ -47,7 +47,7 @@
       ];
     };
 
-    nixosConfigurations.greatjaggi = nixpkgs-normal.lib.nixosSystem {
+    nixosConfigurations.greatjaggi = nixpkgs-unstable.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
         vars = import ./hosts/greatjaggi/vars.nix;
