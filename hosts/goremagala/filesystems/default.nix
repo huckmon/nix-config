@@ -46,22 +46,22 @@
     };
 
   # Mergerfs section that makes the combined drive
-  fileSystems."/mnt/user" =
-    { device = "/mnt/data*";
-      options = [ 
-        "category.create=ff"
-        "defaults"
-        "allow_other" 
-        "fsname=user"
-        "moveonenospc=1"
-        "minfreespace=160G"
-        "func.getattr=newest"
-	"fsname=user"
-        "gid=993"
-        "uid=994"
-        "umask=002"
-        "x-mount.mkdir"
-      ];
-     fsType = "fuse.mergerfs";
-    };
+  fileSystems."/mnt/user" = {
+    fsType = "fuse.mergerfs";
+    device = "/mnt/data*";
+    options = [
+      "category.create=ff"
+      "defaults"
+      "allow_other"
+      "fsname=user"
+      "moveonenospc=1"
+      "minfreespace=100G"
+      "func.getattr=newest"
+      "fsname=user"
+      "gid=993"
+      "uid=994"
+      "umask=002"
+      "x-mount.mkdir"
+    ];
+  };
 }

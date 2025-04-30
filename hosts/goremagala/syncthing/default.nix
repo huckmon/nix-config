@@ -1,4 +1,3 @@
-
 { config, vars, ... }:
 let
   directories = [

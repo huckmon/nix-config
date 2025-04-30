@@ -9,7 +9,7 @@ in
   virtualisation.oci-containers = {
     containers = {
       jellyfin = {
-        image = "lscr.io/linuxserver/jellyfin";
+        image = "lscr.io/linuxserver/jellyfin:latest";
         autoStart = true;
         extraOptions = [
           "--device=/dev/dri/renderD128:/dev/dri/renderD128"
@@ -54,7 +54,7 @@ in
         intel-media-driver
         intel-vaapi-driver
         vaapiVdpau
-	libvdpau-va-gl
+        libvdpau-va-gl
         intel-compute-runtime
         intel-media-sdk
       ];

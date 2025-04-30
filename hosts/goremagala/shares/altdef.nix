@@ -1,4 +1,4 @@
-{ users, config, pkgs, lib, vars, ... }:
+ users, config, pkgs, lib, vars, ... }:
 let
   smb = {
     share_list = {
@@ -27,7 +27,7 @@ in
     #globalSettings = lib.mkOption {
     #  description = "global samba params";
     #  default = { };
-    #  example = { };	
+    #  example = { };
     #};
   };
 
@@ -69,7 +69,7 @@ in
       nmbd.enable = true;
       openFirewall = true;
       settings = {
-	global = {
+        global = {
           workgroup = "WORKGROUP";
           "server string"  = "goremagala";
           "netbios name" = "goremagala";
@@ -120,3 +120,5 @@ in
     };
   };
 }
+
+

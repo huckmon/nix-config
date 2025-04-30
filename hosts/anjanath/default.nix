@@ -10,8 +10,8 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./filesystems
-      ./shares
-      ./syncthing
+      #./shares
+      #./syncthing
       ../../modules
       ../../modules/services
     ]; 
@@ -23,20 +23,6 @@
     enable = true;
     services = {
       enable = true;
-      deluge.enable = true;
-#      jellyfin.enable = true;
-      sonarr.enable = true;
-      radarr.enable = true;
-      prowlarr.enable = true;
-    };
-    samba = {
-      enable = true;
-      #passwordFile = 
-      #shares = {
-	#Media = {
-	 # path = "${vars.mainArray}/Media";
-	#};
-      #};
     };
   };
 

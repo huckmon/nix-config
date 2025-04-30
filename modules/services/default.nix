@@ -22,7 +22,7 @@
       oci-containers.backend = "podman";
     };
     networking.firewall.interfaces.podman0.allowedUDPPorts = [ 53 ]; # podman port
-    networking.firewall.trustedInterfaces = [ "docker0" ];
+    networking.firewall.trustedInterfaces = [ "docker0" "podman0" ];
   };
 
   imports = [
