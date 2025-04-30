@@ -15,7 +15,7 @@
       ../../modules/nixos/syncthing.nix
       ../../modules/nixos/plasma.nix
       ../../modules/nixos/libreoffice.nix
-      ../../modules/nixos/virt-manager.nix
+      #../../modules/nixos/virt-manager.nix
       ../../modules/nixos/steam.nix
       ../../modules/nixos/networkfs.nix
     ];
@@ -77,13 +77,12 @@
 #    group = "root";
 
 
-  #hardware = {
+  hardware = {
     #bluetooth.enable = true;
-  services.pulseaudio = {
-    support32Bit = true;
+    pulseaudio.support32Bit = true;
     graphics = {
-      enable = true;
-      enable32Bit = true;
+    enable = true;
+    enable32Bit = true;
     };
   };
 
@@ -159,7 +158,7 @@
     dolphin-emu
     melonDS
     lutris
-    dolphin
+    libsForQt5.dolphin
     pulseaudio
     appimage-run
     sops
@@ -178,6 +177,13 @@
     power-profiles-daemon # power profiles for kde
     python3
     jellyfin-media-player
+    mission-center
+    librewolf
+    flatpak
+    obs-studio
+    libqalculate
+    qalculate-qt
+    floorp
   ];
 
   nixpkgs.config.allowUnfree = true;
