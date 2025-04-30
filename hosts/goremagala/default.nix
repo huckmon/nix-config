@@ -9,7 +9,6 @@
       ./syncthing
       ../../modules
       ../../modules/services
-
     ]; 
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

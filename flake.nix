@@ -52,7 +52,7 @@
         vars = import ./hosts/greatjaggi/vars.nix;
       };
       modules = [
-        ./host/greatjaggi
+        ./hosts/greatjaggi
         ./users/huck
         inputs.home-manager.nixosModules.default
         inputs.nixos-heardware.nixosModules.framework-13th-gen-intel
