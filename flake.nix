@@ -3,7 +3,7 @@
 
   inputs = {
 
-    #nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small";
+    nixpkgs-small.url = "github:nixos/nixpkgs/nixos-unstable-small";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
@@ -47,7 +47,7 @@
       ];
     };
 
-    nixosConfigurations.greatjaggi = nixpkgs-unstable.lib.nixosSystem {
+    nixosConfigurations.greatjaggi = nixpkgs.lib.nixosSystem {
       specialArgs = {
         inherit inputs;
         vars = import ./hosts/greatjaggi/vars.nix;
@@ -56,7 +56,7 @@
         ./hosts/greatjaggi
         ./users/huck
         inputs.home-manager.nixosModules.default
-        inputs.nixos-heardware.nixosModules.framework-13th-gen-intel
+        inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
       ];
     };
 
