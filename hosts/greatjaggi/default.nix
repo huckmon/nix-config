@@ -12,12 +12,12 @@
       inputs.home-manager.nixosModules.default
       inputs.sops-nix.nixosModules.sops
       #../../modules/nixos/hyprland.nix
-      ../../modules/nixos/syncthing.nix
-      ../../modules/nixos/plasma.nix
-      ../../modules/nixos/libreoffice.nix
+      ./syncthing
+      #../../modules/nixos/plasma.nix
+      #../../modules/nixos/libreoffice.nix
       #../../modules/nixos/virt-manager.nix
-      ../../modules/nixos/steam.nix
-      ../../modules/nixos/networkfs.nix
+      #../../modules/nixos/steam.nix
+      #../../modules/nixos/networkfs.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -34,7 +34,7 @@
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     defaultSopsFormat = "yaml";
-    age.keyfile = "/home/huck/.config/sops/age/keys.txt";
+    age.keyFile = "/home/huck/.config/sops/age/keys.txt";
     secrets = {
       "samba/user"= {};
       "samba/password"= {};
@@ -155,6 +155,8 @@
     hunspellDicts.en_AU
     steam
     mangohud
+    samba
+    cifs-utils
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -187,11 +189,17 @@
     };
   };
 
+  services.samba.enable = true;
+  services.samba.openFirewall = true;
+  services.samba.smbd.enable = true;
+  services.gvfs.enable = true;
+
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true; # wrapper command for running in optimised micro compositor
   programs.gamemode.enable = true; # temporarily requests of optimisations to OS and game process
   # NOTE to take effect of any of these, they need to be added as steam launch options
   # gamemoderun %command% gamescope %command%
+
 
   # Enable the X11 windowing system.
   services.xserver.enable = true; # enable X11 for xwayand

@@ -56,7 +56,7 @@
         ./hosts/greatjaggi
         ./users/huck
         inputs.home-manager.nixosModules.default
-        inputs.nixos-heardware.nixosModules.framework-13th-gen-intel
+        inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
       ];
     };
 

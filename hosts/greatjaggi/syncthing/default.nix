@@ -1,4 +1,4 @@
-{ config, vars, ... }:
+{ config, vars, inputs, pkgs, ... }:
 let
   directories = [
     "/home/syncthing"
@@ -15,6 +15,7 @@ in
   services = {
     syncthing = {
       enable = true;
+      user = "huck";
       guiAddress = "0.0.0.0:8384";
       openDefaultPorts = false;
       dataDir = "/home/syncthing";
@@ -24,4 +25,8 @@ in
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    syncthing
+  ];
+ 
 }
