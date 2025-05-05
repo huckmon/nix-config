@@ -14,8 +14,6 @@ in
   config = lib.mkIf cfg.enable {
     services.${service} = {
       enable = true;
-      user = config.customModules.user;
-      group = config.customModules.group;
       openFirewall = true;
     };
   };
