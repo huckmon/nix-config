@@ -42,8 +42,8 @@ in
   config = lib.mkIf cfg.enable {
     services.deluge = {
       enable = true;
-      user = cfg.user;
-      group = cfg.group;
+      user = config.customModules.user;
+      group = config.customModules.group;
       web = {
         enable = true;
       openFirewall = true;
