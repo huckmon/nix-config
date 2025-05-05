@@ -143,7 +143,6 @@
     discord
     signal-desktop
     obsidian
-    prismlauncher
 	ascii-image-converter
 	wine
     brightnessctl		     # screen brightness tool
