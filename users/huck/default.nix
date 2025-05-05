@@ -7,10 +7,11 @@
       huck = {
         isNormalUser = true;
         extraGroups = [ 
-	  "wheel"
-	  "users"
-	  "podman"
-	];
+          "wheel"
+          "users"
+          "podman"
+          "networkmanager"
+        ];
 	# openssh.authorizedKeys.keys = [ ];
         # hashedPasswordFile = ;
       };

@@ -1,8 +1,6 @@
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running `nixos-help`).
-
 { config, pkgs, inputs, vars, lib, ... }:
 
 {
@@ -19,6 +17,10 @@
   # custom option for services configs
   customModules = {
     enable = true;
+    powerManagement = {
+      enable = true;
+      hd-idle = true;
+    };
     services = {
       enable = true;
     };
@@ -28,7 +30,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = ${hostname};
+  networking.hostName = "anjanath";
   networking.firewall.enable = true;
 
   # Set your time zone.

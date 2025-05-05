@@ -16,6 +16,10 @@
   # custom option for services configs
   customModules = {
     enable = true;
+    powerManagement = {
+      enable = true;
+      hd-idle = true;
+    };
     services = {
       enable = true;
       deluge.enable = true;
@@ -33,7 +37,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = ${hostname};
+  networking.hostName = "goremagala";
   networking.firewall.enable = true;
 
   # time.timeZone = "Europe/Amsterdam";

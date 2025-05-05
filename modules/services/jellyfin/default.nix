@@ -13,7 +13,7 @@ in
 #    };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfgServ.enable {
 #    nixpkgs.config.packageOverrides = pkgs: {
 #      vaapiIntel = pkgs.vaapiIntel.override {enableHybridCodec = true; };
 #    };

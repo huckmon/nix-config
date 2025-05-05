@@ -1,4 +1,4 @@
-{ config, vars, lib,... }:
+{ config, lib,... }:
 let
   cfg = config.customModules;
 in
@@ -21,6 +21,7 @@ in
 
   imports = [
     #./duckdns
+    #./motd
     ./powermanagement
   ];
   config = lib.mkIf cfg.enable {

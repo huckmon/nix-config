@@ -23,6 +23,14 @@
     };
   };
 
+  customModules = {
+    powerManagement = {
+      enable = true;
+      powertopAudioFix = true;
+      pipewireCameraFix = true;
+    };
+  };
+
   # sops-nix configuration - move to it's own file
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
@@ -78,18 +86,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  # User. Don't forget to set a password with ‘passwd’.
-  users = {
-    motdFile = "/etc/motd";
-    users.huck = {
-      isNormalUser = true;
-      extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
-      packages = with pkgs; [
-
-      ];
-    };
   };
 
   # List packages installed in system profile. To search, run:
@@ -162,26 +158,6 @@
   powerManagement = {
     enable = true;
     powertop.enable = true;
-  };
-
-  # fixes audio popping caused by powertop audio tuning
-  # try moving these services to powerManagement section
-  systemd.services.audio-fix = {
-    script = ''
-      echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
-    '';
-    wantedBy = [ "multi-user.target" ];
-  };
-
-  # prevents pipewire from nuking battery by making it ignore cameras
-  services.pipewire.wireplumber.extraConfig = {
-    "10-disable-camera" = {
-      "wireplumber.profiles" = {
-        main = {
-	  "monitor.libcamera" = "disabled";
-	};
-      };
-    };
   };
 
   # services are used to connect to share
