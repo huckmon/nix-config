@@ -11,6 +11,7 @@
       inputs.home-manager.nixosModules.default
       inputs.sops-nix.nixosModules.sops
       ./syncthing
+      ../../modules
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
