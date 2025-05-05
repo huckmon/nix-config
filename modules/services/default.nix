@@ -31,6 +31,7 @@ in
     ./arr/prowlarr
     ./arr/sonarr
     ./arr/radarr
+    ./arr/flaresolverr
     ./deluge
     ./jellyfin
     ./nginxproxymanager
