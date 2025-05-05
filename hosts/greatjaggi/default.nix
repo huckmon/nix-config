@@ -8,16 +8,9 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #./shares/samba.nix
       inputs.home-manager.nixosModules.default
       inputs.sops-nix.nixosModules.sops
-      #../../modules/nixos/hyprland.nix
       ./syncthing
-      #../../modules/nixos/plasma.nix
-      #../../modules/nixos/libreoffice.nix
-      #../../modules/nixos/virt-manager.nix
-      #../../modules/nixos/steam.nix
-      #../../modules/nixos/networkfs.nix
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -67,7 +60,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
 
-  networking.hostName = "greatjaggi"; # Define your hostname.
+  networking.hostName = ${hostname}; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
@@ -156,6 +149,8 @@
     mangohud
     samba
     cifs-utils
+    github-desktop
+    nil
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -170,6 +165,7 @@
   };
 
   # fixes audio popping caused by powertop audio tuning
+  # try moving these services to powerManagement section
   systemd.services.audio-fix = {
     script = ''
       echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
@@ -188,11 +184,13 @@
     };
   };
 
+  # services are used to connect to share
   services.samba.enable = true;
   services.samba.openFirewall = true;
   services.samba.smbd.enable = true;
   services.gvfs.enable = true;
 
+  # steam config
   programs.steam.enable = true;
   programs.steam.gamescopeSession.enable = true; # wrapper command for running in optimised micro compositor
   programs.gamemode.enable = true; # temporarily requests of optimisations to OS and game process

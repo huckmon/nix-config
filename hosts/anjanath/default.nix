@@ -10,8 +10,6 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       ./filesystems
-      #./shares
-      #./syncthing
       ../../modules
       ../../modules/services
     ]; 
@@ -30,7 +28,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "anjanath";
+  networking.hostName = ${hostname};
   networking.firewall.enable = true;
 
   # Set your time zone.

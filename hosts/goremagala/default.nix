@@ -33,7 +33,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "goremagala";
+  networking.hostName = ${hostname};
   networking.firewall.enable = true;
 
   # time.timeZone = "Europe/Amsterdam";
