@@ -2,7 +2,7 @@
 let
   service = "powerManagement";
   cfg = config.customModules;
-  cfgServ = cfg.${service};
+  cfgServ = customModules.${service};
 in
 {
 
@@ -15,7 +15,7 @@ in
 
   #boot.kernalParams = [ "pcie_aspm=force" ] # CANT USE not all components have ASPM functionality
   config = {
-      cfgServ.enable = lib.mkIf {
+    cfgServ.enable = lib.mkIf {
       powerManagement.powertop.enable = true;
 
       environment.systemPackages = with pkgs; [
