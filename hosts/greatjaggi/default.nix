@@ -27,8 +27,8 @@
   customModules = {
     powerManagement = {
       enable = true;
-      powertopAudioFix = true;
-      pipewireCameraFix = true;
+      powertopAudioFix.enable = true;
+      pipewireCameraFix.enable = true;
     };
   };
 

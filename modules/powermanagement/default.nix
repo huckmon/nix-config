@@ -14,9 +14,9 @@ in
   };
 
   #boot.kernalParams = [ "pcie_aspm=force" ] # CANT USE not all components have ASPM functionality
-  config = lib.mkIf cfgServ {
+  config = lib.mkIf {
 
-    enable = {
+    cfgServ.enable = {
       powerManagement.powertop.enable = true;
 
       environment.systemPackages = with pkgs; [
@@ -28,7 +28,7 @@ in
     };
 
     # Service to spin down drives after 5 minutes of idle
-    hd-idle = {
+    cfgServ.hd-idle = {
       systemd.services.hd-idle = {
         description = "HD spin down daemon";
         wantedBy = [ "multi-user.target" ];
@@ -40,7 +40,7 @@ in
     };
 
     # fixes audio popping caused by powertop audio tuning
-    powertopAudioFix = {
+    cfgServ.powertopAudioFix = {
       systemd.services.audio-fix = {
         script = ''
           echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
@@ -50,7 +50,7 @@ in
     };
 
     # prevents pipewire from nuking battery by making it ignore cameras
-    pipewireCameraFix = {
+    cfgServ.pipewireCameraFix = {
       services.pipewire.wireplumber.extraConfig = {
         "10-disable-camera" = {
           "wireplumber.profiles" = {
