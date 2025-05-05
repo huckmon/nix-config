@@ -27,6 +27,8 @@
       radarr.enable = true;
       prowlarr.enable = true;
       jellyfin.enable = true;
+      vaultwarden.enable = true;
+      nginxproxymanager.enable = true;
     };
     samba = {
       enable = true;

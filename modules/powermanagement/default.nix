@@ -2,7 +2,6 @@
 let
   service = "powerManagement";
   cfg = config.customModules.${service};
-  #cfg = config.customModules;
 in
 {
 
@@ -17,7 +16,7 @@ in
   config = {
     lib.mkIf = {
 
-      config.customModules.powerManagement.enable = {
+      cfg.enable = {
         powerManagement.powertop.enable = true;
         environment.systemPackages = with pkgs; [
           powertop
@@ -28,7 +27,8 @@ in
       };
 
       # Service to spin down drives after 5 minutes of idle
-      config.customModules.powerManagement.hd-idle = lib.mkIf {
+      cfg.hd-idle = {
+        description = "hd-idle service";
         systemd.services.hd-idle = {
           description = "HD spin down daemon";
           wantedBy = [ "multi-user.target" ];
@@ -40,7 +40,7 @@ in
       };
 
       # fixes audio popping caused by powertop audio tuning
-      config.customModules.powerManagement.powertopAudioFix = lib.mkIf {
+      cfg.powertopAudioFix = {
         systemd.services.audio-fix = {
           script = ''
             echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
@@ -50,7 +50,7 @@ in
       };
 
       # prevents pipewire from nuking battery by making it ignore cameras
-      config.customModules.powerManagement.pipewireCameraFix = lib.mkIf {
+      cfg.pipewireCameraFix = {
         services.pipewire.wireplumber.extraConfig = {
           "10-disable-camera" = {
             "wireplumber.profiles" = {

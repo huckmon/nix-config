@@ -1,8 +1,7 @@
 { config, pkgs, lib, vars, ... }:
 let
   service = "jellyfin";
-  cfgServ = config.customModules.services.${service};
-  cfg = config.customModules;
+  cfg = config.customModules.services.${service};
 in
 {
 
