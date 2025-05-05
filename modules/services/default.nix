@@ -1,12 +1,14 @@
 { lib, pkgs, config, ... }:
-
+let
+  cfg = config.customModules.services;
+in
 {
 
   options.customModules.services = {
     enable = lib.mkEnableOption "Server settings and services";
   };
 
-  config = lib.mkIf config.customModules.services.enable {
+  config = lib.mkIf cfg.enable {
     environment.systemPackages = with pkgs; [
       docker-compose
     ];
@@ -29,7 +31,6 @@
     ./arr/prowlarr
     ./arr/sonarr
     ./arr/radarr
-    #./arr
     ./deluge
     ./jellyfin
     ./nginxproxymanager

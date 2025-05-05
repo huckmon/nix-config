@@ -26,6 +26,7 @@
       sonarr.enable = true;
       radarr.enable = true;
       prowlarr.enable = true;
+      flaresolverr.enable = true;
       jellyfin.enable = true;
       vaultwarden.enable = true;
       nginxproxymanager.enable = true;

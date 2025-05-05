@@ -1,8 +1,7 @@
 { config, vars, lib, ... }:
 let
   service = "radarr";
-  cfgServ = config.customModules.services.${service};
-  cfg = config.customModules;
+  cfg = config.customModules.services.${service};
 in
 {
   options.customModules.services.${service} = {

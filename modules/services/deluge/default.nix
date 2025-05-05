@@ -1,8 +1,7 @@
 { config, lib, vars, ... }:
 let
   service = "deluge";
-  cfgServ = config.customModules.services.${service};
-  cfg = config.customModules;
+  cfg = config.customModules.services.${service};
 in
 {
 #  virtualisation.oci-containers = {
@@ -40,7 +39,7 @@ in
       default = "/var/lib/deluge";
     };
   };    
-  config = lib.mkIf cfgServ.enable {
+  config = lib.mkIf cfg.enable {
     services.deluge = {
       enable = true;
       user = cfg.user;

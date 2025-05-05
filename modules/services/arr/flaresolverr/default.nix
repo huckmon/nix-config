@@ -1,10 +1,7 @@
 { config, vars, lib, ... }:
 let
-  directories = [
-    service = "flaresolverr";
-    cfgServ = config.customModules.services.${service};
-    cfg = config.customModules;
-  ];
+  service = "flaresolverr";
+  cfg = config.customModules.services.${service};
 in
 {
   options.cfgServ = {
