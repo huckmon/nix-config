@@ -148,6 +148,7 @@
     cifs-utils
     github-desktop
     nil
+    intel-undervolt
   ];
 
   nixpkgs.config.allowUnfree = true;
