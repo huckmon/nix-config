@@ -78,7 +78,7 @@
   # Set your time zone.
   time.timeZone = "Australia/Adelaide";
 
-  # Sound.
+  # Sound
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -98,7 +98,7 @@
     htop
     python312Packages.ds4drv
     podman
-    powertop
+    powertop              # redundant due to powermanagement module
     pciutils
     dolphin-emu
     melonDS
@@ -143,12 +143,11 @@
     hunspell
     hunspellDicts.en_AU
     steam
-    mangohud
+    mangohud                # steam, to breakout
     samba
     cifs-utils
     github-desktop
-    nil
-    intel-undervolt
+    nil                     # for use with kate, maybe breakout
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -179,7 +178,7 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true; # enable X11 for xwayand
   services.displayManager.sddm.enable = true; # enable simple desktop display manager
-  services.desktopManager.plasma6.enable = true; # 3nable plasma6
+  services.desktopManager.plasma6.enable = true; # enable plasma6, move to kde module
 
   # Copy the NixOS configuration file and link it from the resulting system
   # (/run/current-system/configuration.nix). This is useful in case you
