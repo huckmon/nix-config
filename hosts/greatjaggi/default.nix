@@ -12,6 +12,7 @@
       inputs.sops-nix.nixosModules.sops
       ./syncthing
       ../../modules
+      ../../dots/kate
     ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -100,8 +101,8 @@
     podman
     powertop              # redundant due to powermanagement module
     pciutils
-    dolphin-emu
-    melonDS
+    dolphin-emu           # game related
+    melonDS               # game related
     lutris
     libsForQt5.dolphin
     pulseaudio
@@ -147,7 +148,6 @@
     samba
     cifs-utils
     github-desktop
-    nil                     # for use with kate, maybe breakout
   ];
 
   nixpkgs.config.allowUnfree = true;
