@@ -7,7 +7,6 @@
     nil
     dockerfile-language-server-nodejs
     bash-language-server
-    python-lsp-server
   ];
 
 }
