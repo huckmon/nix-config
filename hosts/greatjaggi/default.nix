@@ -149,6 +149,7 @@
     cifs-utils
     github-desktop
     godot
+    tmux
   ];
 
   nixpkgs.config.allowUnfree = true;
