@@ -148,6 +148,7 @@
     samba
     cifs-utils
     github-desktop
+    godot
   ];
 
   nixpkgs.config.allowUnfree = true;
