@@ -31,8 +31,8 @@
         vars = import ./hosts/anjanath/vars.nix; # handles custom variables from var file
       };
       modules = [
-        ./hosts/anjanath
-        ./users/huck
+        hosts/anjanath
+        users/huck
       ];
     };
 
@@ -42,8 +42,8 @@
         vars = import ./hosts/goremagala/vars.nix;
       };
       modules = [
-        ./hosts/goremagala
-        ./users/huck
+        hosts/goremagala
+        users/huck
       ];
     };
 
@@ -53,8 +53,9 @@
         vars = import ./hosts/greatjaggi/vars.nix;
       };
       modules = [
-        ./hosts/greatjaggi
-        ./users/huck
+        hosts/greatjaggi
+        users/huck
+        dots/tmux
         inputs.home-manager.nixosModules.default
         inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
       ];
