@@ -63,6 +63,7 @@
     python312
     intel-gpu-tools
     rsync
+    tmux
   ];
 
 
