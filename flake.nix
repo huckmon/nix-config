@@ -55,7 +55,7 @@
       modules = [
         hosts/greatjaggi
         users/huck
-        dots/tmux
+        #dots/tmux
         inputs.home-manager.nixosModules.default
         inputs.nixos-hardware.nixosModules.framework-13th-gen-intel
       ];

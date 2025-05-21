@@ -10,16 +10,17 @@
           "wheel"
           "users"
           "podman"
-          "networkmanager"
+#          "networkmanager"
         ];
+        group = "huck";
 	# openssh.authorizedKeys.keys = [ ];
         # hashedPasswordFile = ;
       };
     };
-    #groups = {
-    #  huck = {
-    #    gid = ;
-    #  };
-    #};
+    groups = {
+      huck = {
+        gid = 1000;
+      };
+    };
   };
 }
