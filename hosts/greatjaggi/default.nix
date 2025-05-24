@@ -152,6 +152,7 @@
     tmux
     toybox
     unzip
+    unrar
   ];
 
   nixpkgs.config.allowUnfree = true;
