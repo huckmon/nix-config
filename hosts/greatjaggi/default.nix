@@ -151,6 +151,7 @@
     godot
     tmux
     toybox
+    unzip
   ];
 
   nixpkgs.config.allowUnfree = true;
