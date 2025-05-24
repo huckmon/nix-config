@@ -150,6 +150,7 @@
     github-desktop
     godot
     tmux
+    toybox
   ];
 
   nixpkgs.config.allowUnfree = true;
