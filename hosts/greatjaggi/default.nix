@@ -93,7 +93,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (python312Full.withPackages (
+    (python312.withPackages (
       ps: with ps; [
         pip
         ds4drv
