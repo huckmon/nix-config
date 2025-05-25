@@ -150,7 +150,6 @@
     github-desktop
     godot
     tmux
-    toybox
     unzip
     unrar
   ];
