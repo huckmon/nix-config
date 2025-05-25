@@ -93,11 +93,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    (python312Full.withPackages (
+      ps: with ps; [
+        pip
+        ds4drv
+      ]
+    ))
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     neofetch
     htop
-    python312Packages.ds4drv
     podman
     powertop              # redundant due to powermanagement module
     pciutils
