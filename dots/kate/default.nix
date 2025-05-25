@@ -7,6 +7,8 @@
     nil
     dockerfile-language-server-nodejs
     bash-language-server
+    typescript-language-server
+    python312Packages.python-lsp-server
   ];
 
 }
