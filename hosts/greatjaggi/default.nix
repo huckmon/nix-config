@@ -56,7 +56,7 @@
   };
 
   hardware = {
-    pulseaudio.support32Bit = true;
+    pulseaudio.support32Bit = true; # currently creates issues as hardware.pulseaudio has been changed to services.pulseaudio
     graphics = {
     enable = true;
     enable32Bit = true;
