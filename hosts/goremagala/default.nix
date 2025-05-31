@@ -36,7 +36,7 @@
     };
   };
 
-
+  powerManagement.powertop.enable = true;
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -64,8 +64,8 @@
     intel-gpu-tools
     rsync
     tmux
+    pciutils
   ];
-
 
   programs.gnupg.agent = {
     enable = true;
