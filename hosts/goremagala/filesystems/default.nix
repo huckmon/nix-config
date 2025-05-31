@@ -24,6 +24,12 @@
   
   # Disk mounts
 
+  fileSystems."/mnt/ssd" = 
+    { device = "/dev/disk/by-uuid/da085350-7459-485a-b19d-9ff26d14be28";
+      fsType = "ext4";
+      options = [ "defaults" ];
+    };
+
   fileSystems."/mnt/data1" =
     { device = "/dev/disk/by-uuid/cfa67f8d-a663-425b-be1e-028c5a5f9c1b";
       fsType = "ext4";
