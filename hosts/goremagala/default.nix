@@ -65,6 +65,7 @@
     rsync
     tmux
     pciutils
+    powertop
   ];
 
   programs.gnupg.agent = {
