@@ -164,10 +164,23 @@
     "electron-25.9.0"
   ];
 
-  # Powertop settings
-  powerManagement = {
-    enable = true;
-    powertop.enable = true;
+  powerManagement.powertop.enable = true;
+
+  services.pipewire.wireplumber.extraConfig = {
+    "10-disable-camera" = {
+      "wireplumber.profiles" = {
+        main = {
+      "monitor.libcamera" = "disabled";
+    };
+      };
+    };
+  };
+
+  systemd.services.audio-fix = {
+    script = ''
+      echo 0 | tee /sys/module/snd_hda_intel/parameters/power_save
+    '';
+    wantedBy = [ "multi-user.target" ];
   };
 
   # services are used to connect to share
