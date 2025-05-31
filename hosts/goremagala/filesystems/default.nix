@@ -14,6 +14,8 @@
     parted
     snapraid
     gptfdisk
+    hd-idle
+    hdparm
   ];
 
   # Mergerfs section
@@ -69,5 +71,14 @@
       "umask=002"
       "x-mount.mkdir"
     ];
+  };
+
+  systemd.services.hd-idle = {
+    description = "HD spin down daemon";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 900";
+    };
   };
 }
