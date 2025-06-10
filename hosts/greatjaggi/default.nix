@@ -39,8 +39,7 @@
     defaultSopsFormat = "yaml";
     age.keyFile = "/home/huck/.config/sops/age/keys.txt";
     secrets = {
-      "samba/user"= {};
-      "samba/password"= {};
+      "samba-password" = { }; #owner = config.fileSystems."/mnt/share".options; };
     };
   };
 
@@ -50,7 +49,7 @@
     fsType = "cifs";
     options = let
       automount_opts = "noauto,x-systemd.idle-timeout=60,x-systemd.device-timeout=5s,x-systemd.mount-timeout=5s,user,users";
-    in ["${automount_opts},credentials=/home/huck/smb-secrets,uid=1001,gid=100"];
+    in ["${automount_opts},username=share,password=$(cat ${config.sops.secrets."samba-password".path}),uid=1001,gid=100"];
   };
 
   hardware = {
