@@ -25,6 +25,7 @@
       deluge.enable = true;
       sonarr.enable = true;
       radarr.enable = true;
+      readarr.enable = true;
       prowlarr.enable = true;
       flaresolverr.enable = true;
       jellyfin.enable = true;
