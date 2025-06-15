@@ -154,6 +154,7 @@
     tmux
     unzip
     unrar
+    file
   ];
 
   nixpkgs.config.allowUnfree = true;
