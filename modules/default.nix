@@ -23,6 +23,7 @@ in
     #./duckdns
     #./motd
     ./powermanagement
+    ./nix-ld
   ];
   config = lib.mkIf cfg.enable {
     users = {
