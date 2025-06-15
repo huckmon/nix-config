@@ -26,6 +26,7 @@
   };
 
   customModules = {
+    nix-ld.enable = true;
     powerManagement = {
       enable = true;
       powertopAudioFix = true;
