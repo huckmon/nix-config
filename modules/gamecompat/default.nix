@@ -14,6 +14,9 @@ in
         protontricks
         wineWowPackages.stable
         lutris
+        zenity
+        yad
+        p7zip
     ];
 
   };
