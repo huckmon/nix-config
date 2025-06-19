@@ -151,6 +151,8 @@ in
         # For natron
         libxcrypt-legacy
         libGLU
+
+        libpulseaudio
         ];
     };
 
