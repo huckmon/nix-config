@@ -9,7 +9,8 @@ in
 
   config = lib.mkIf cfg.gameCompat.enable {
 
-    environment.systemPackages = with pkgs; [
+    environment = {
+      systemPackages = with pkgs; [
         winetricks
         protontricks
         wineWowPackages.stable
@@ -17,7 +18,14 @@ in
         zenity
         yad
         p7zip
-    ];
+        dotnet-runtime_9
+      ];
+
+      #variables = {
+      #  WINE = "$(which wine)";
+      #  WINETRICKS = "$(which winetricks)";
+      #};
+    };
 
   };
 
