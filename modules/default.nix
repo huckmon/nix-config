@@ -24,6 +24,8 @@ in
     #./motd
     ./powermanagement
     ./nix-ld
+    ./toybox
+    ./gamecompat
   ];
   config = lib.mkIf cfg.enable {
     users = {
