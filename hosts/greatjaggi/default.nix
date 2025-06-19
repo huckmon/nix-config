@@ -27,8 +27,8 @@
 
   customModules = {
     nix-ld.enable = true;
-    gameCompat = true;
-    toybox = true;
+    gameCompat.enable = true;
+    toybox.enable = true;
     powerManagement = {
       enable = true;
       powertopAudioFix = true;
