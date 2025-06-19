@@ -103,12 +103,6 @@
     sops
     vlc
     keepassxc
-    (lutris.override {
-           extraPkgs = pkgs: [
-             wineWowPackages.stable
-             winetricks
-           ];
-    })
     gnupg
     gnupg1
     git
@@ -128,7 +122,6 @@
     signal-desktop
     obsidian
 	ascii-image-converter
-	wine
     brightnessctl		     # screen brightness tool
     pamixer
     playerctl
@@ -145,7 +138,6 @@
     tmux
     unzip
     unrar
-    file
   ];
 
   nixpkgs.config.allowUnfree = true;
