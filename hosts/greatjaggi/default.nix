@@ -26,7 +26,7 @@
   };
 
   customModules = {
-    nix-ld.enable = true;
+    #nix-ld.enable = true;
     gameCompat.enable = true;
     toybox.enable = true;
     powerManagement = {
@@ -35,6 +35,17 @@
       pipewireCameraFix = true;
     };
   };
+
+  virtualisation = { # for use with virt dev environments
+      podman = {
+        enable = true;
+        dockerCompat = false;
+        #defaultNetwork.settings = {
+        #  dns_enabled = true;
+        #};
+      };
+      oci-containers.backend = "podman";
+    };
 
   # sops-nix configuration - move to it's own file
   sops = {
@@ -45,12 +56,9 @@
     #};
   };
 
-  hardware = {
-    pulseaudio.support32Bit = true; # currently creates issues as hardware.pulseaudio has been changed to services.pulseaudio
-    graphics = {
+  hardware.graphics = {
     enable = true;
     enable32Bit = true;
-    };
   };
 
   services.flatpak.enable = true;
@@ -71,6 +79,10 @@
 
   # Sound
   security.rtkit.enable = true;
+  #services.pulseaudio = {
+  #  enable = true;
+  #  support32Bit = true;
+  #};
   services.pipewire = {
     enable = true;
     wireplumber.enable = true;
@@ -83,12 +95,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    (python312.withPackages (
-      ps: with ps; [
-        pip
-        ds4drv
-      ]
-    ))
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     neofetch
@@ -123,8 +129,8 @@
     discord
     signal-desktop
     obsidian
-	ascii-image-converter
-    brightnessctl		     # screen brightness tool
+    ascii-image-converter
+    brightnessctl
     pamixer
     playerctl
     xdg-user-dirs            # tool to help well known user dirs
