@@ -68,6 +68,7 @@
     pciutils
     powertop
     smartmontools
+    e2fsprogs
   ];
 
   programs.gnupg.agent = {
