@@ -67,6 +67,7 @@
     tmux
     pciutils
     powertop
+    smartmontools
   ];
 
   programs.gnupg.agent = {
