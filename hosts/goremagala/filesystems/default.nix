@@ -32,11 +32,6 @@
       options = [ "defaults" ];
     };
 
-  fileSystems."/mnt/data1" =
-    { device = "/dev/disk/by-uuid/d4db05d9-b196-4c50-aeef-c0960017afc6";
-      fsType = "ext4";
-      #options = [ "defaults" ];
-    };
   fileSystems."/mnt/data2" =
     { device = "/dev/disk/by-uuid/3d133b0f-a465-4851-a97b-cbfffb1f899b";
       fsType = "ext4";
