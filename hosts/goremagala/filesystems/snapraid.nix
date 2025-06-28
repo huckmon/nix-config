@@ -19,8 +19,8 @@
 
     # List mergerfs drives as dataDisks
     dataDisks = {
-      d2 = "/mnt/data2/";
-      d3 = "/mnt/data3/";
+      d1 = "/mnt/data2/";
+      d2 = "/mnt/data3/";
     };
 
     # List folders and filetypes not to sync
