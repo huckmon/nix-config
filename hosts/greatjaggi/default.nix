@@ -100,11 +100,10 @@
     neofetch
     htop
     podman
-    powertop              # redundant due to powermanagement module
+    powertop
     pciutils
-    dolphin-emu           # game related
-    melonDS               # game related
-    lutris
+    dolphin-emu
+    melonDS
     libsForQt5.dolphin
     pulseaudio
     appimage-run
@@ -115,7 +114,7 @@
     gnupg1
     git
     gimp
-    power-profiles-daemon   # power profiles for kde
+    power-profiles-daemon
     python3
     jellyfin-media-player
     mission-center
@@ -133,12 +132,12 @@
     brightnessctl
     pamixer
     playerctl
-    xdg-user-dirs            # tool to help well known user dirs
+    xdg-user-dirs
     libreoffice
     hunspell
     hunspellDicts.en_AU
     steam
-    mangohud                # steam, to breakout
+    mangohud
     samba
     cifs-utils
     github-desktop
@@ -146,6 +145,14 @@
     tmux
     unzip
     unrar
+
+    wine
+    wine-ge
+    adwaita-icon-theme
+    (lutris.override {
+       extraPkgs = pkgs: [
+       ];
+    })
   ];
 
   nixpkgs.config.allowUnfree = true;
