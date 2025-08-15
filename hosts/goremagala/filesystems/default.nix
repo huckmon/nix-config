@@ -11,17 +11,12 @@
     mergerfs-tools
     exfatprogs
     fuse
-    parted
     snapraid
-    gptfdisk
-    hd-idle
-    hdparm
   ];
 
-  # Mergerfs section
   programs.fuse.userAllowOther = true;
 
-  # This fixes the weird mergerfs permissions issue
+  # Fixes the weird mergerfs permissions issue
   boot.initrd.systemd.enable = true;
   
   # Disk mounts
@@ -68,12 +63,4 @@
     ];
   };
 
-  systemd.services.hd-idle = {
-    description = "HD spin down daemon";
-    wantedBy = [ "multi-user.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 900";
-    };
-  };
 }

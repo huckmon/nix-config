@@ -16,10 +16,6 @@
   # custom option for services configs
   customModules = {
     enable = true;
-    powerManagement = {
-      enable = true;
-      hd-idle = true;
-    };
     services = {
       enable = true;
       deluge.enable = true;
@@ -69,6 +65,14 @@
     powertop
     smartmontools
     e2fsprogs
+    hd-idle
+    hddtemp
+    cpufrequtils
+    exfatprogs
+    parted
+    gptfdisk
+    hd-idle
+    hdparm
   ];
 
   programs.gnupg.agent = {
@@ -83,6 +87,15 @@
     settings = {
       PrintMotd = true;
       #Password
+    };
+  };
+
+  systemd.services.hd-idle = {
+    description = "HD spin down daemon";
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "simple";
+      ExecStart = "${pkgs.hd-idle}/bin/hd-idle -i 3600";
     };
   };
 
