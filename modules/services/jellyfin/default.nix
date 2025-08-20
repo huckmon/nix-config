@@ -24,7 +24,8 @@ in
         vaapiVdpau
         libvdpau-va-gl
         intel-compute-runtime
-        intel-media-sdk
+        #intel-media-sdk
+        vpl-gpu-rt
       ];
     };
 #    services.${service} = {
