@@ -104,7 +104,7 @@
     pciutils
     dolphin-emu
     melonDS
-    libsForQt5.dolphin
+    kdePackages.dolphin #libsForQt5.dolphin
     pulseaudio
     appimage-run
     sops
@@ -116,13 +116,13 @@
     gimp
     power-profiles-daemon
     python3
-    jellyfin-media-player
+    #jellyfin-media-player
     mission-center
     librewolf
     obs-studio
     libqalculate
-    qalculate-qt
-    floorp
+    qalculate-gtk
+    floorp-bin
     firefox
     tree
     discord
@@ -147,7 +147,7 @@
     unrar
 
     wine
-    wine-ge
+    #wine-ge
     adwaita-icon-theme
     (lutris.override {
        extraPkgs = pkgs: [
@@ -158,6 +158,7 @@
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
     "electron-25.9.0"
+    "qtwebengine-5.15.19"
   ];
 
   powerManagement.powertop.enable = true;
