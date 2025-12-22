@@ -92,5 +92,6 @@
       "umask=002"
       "x-mount.mkdir"
     ];
+  };
 
 }
