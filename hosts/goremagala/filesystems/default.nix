@@ -77,16 +77,15 @@
 
   fileSystems."/mnt/spool" = {
     fsType = "fuse.mergerfs";
-    device = "/mnt/ssdpool-data*";
+    device = "/mnt/ssdpool-data1";
     options = [
       "category.create=ff"
       "defaults"
       "allow_other"
-      "fsname=user"
+      "fsname=spool"
       "moveonenospc=1"
-      "minfreespace=100G"
+      "minfreespace=10G"
       "func.getattr=newest"
-      "fsname=user"
       "gid=993"
       "uid=994"
       "umask=002"
