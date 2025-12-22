@@ -29,6 +29,11 @@
       "/tmp/"
       "/lost-found/"
       "/.snapshots/"      ];
+
+    # add autosave per 100 GB
+    extraConfig = ''
+      autosave 100
+    '';
   };
 
   # Snapraid Systemd Services

@@ -43,6 +43,18 @@
       #options = [ "defaults" ];
     };
 
+  #currently these two SSDs are not setup in any mirroring config
+  fileSystems."/mnt/ssdpool-data1" =
+    { device = "/dev/disk/by-uuid/120c0b78-6e77-46d8-a31d-12034a614a62";
+      fsType = "ext4";
+      #options = [ "defaults" ];
+    };
+  fileSystems."/mnt/ssdpool-parity1" =
+    { device = "/dev/disk/by-uuid/867c4fda-71f1-4b05-bed6-320d49931f7f";
+      fsType = "ext4";
+      #options = [ "defaults" ];
+    };
+
   # Mergerfs section that makes the combined drive
   fileSystems."/mnt/user" = {
     fsType = "fuse.mergerfs";
@@ -62,5 +74,23 @@
       "x-mount.mkdir"
     ];
   };
+
+  fileSystems."/mnt/spool" = {
+    fsType = "fuse.mergerfs";
+    device = "/mnt/ssdpool-data*";
+    options = [
+      "category.create=ff"
+      "defaults"
+      "allow_other"
+      "fsname=user"
+      "moveonenospc=1"
+      "minfreespace=100G"
+      "func.getattr=newest"
+      "fsname=user"
+      "gid=993"
+      "uid=994"
+      "umask=002"
+      "x-mount.mkdir"
+    ];
 
 }
