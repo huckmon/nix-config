@@ -73,7 +73,6 @@
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
   networking.firewall.enable = true;
-  networking.nftables.enable = true;
 
   # Set your time zone.
   time.timeZone = "Australia/Adelaide";
@@ -193,6 +192,8 @@
   programs.gamemode.enable = true; # temporarily requests of optimisations to OS and game process
   # NOTE to take effect of any of these, they need to be added as steam launch options
   # gamemoderun %command% gamescope %command%
+  networking.firewall.allowedTCPPorts = [ 27040 ];
+  networking.firewall.allowedUDPPortRanges = [ { from = 27031; to = 27036; } ];
 
 
   # Enable the X11 windowing system.
